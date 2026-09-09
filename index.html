@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INARI CATERING | Capacitación en Línea</title>
+  <style>
+    :root {
+      --brand: #1D2067;
+      --brand-dark: #14164a;
+      --brand-light: #eef0ff;
+      --accent: #f5b942;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #f7f8fc;
+      --white: #ffffff;
+      --danger: #b91c1c;
+      --success-bg: #dcfce7;
+      --success-text: #166534;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    header {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: var(--white);
+      padding: 18px 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .header-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-brand { display: flex; align-items: center; gap: 16px; }
+    .logo-card {
+      width: 76px;
+      height: 76px;
+      border-radius: 18px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
+    .logo-mark {
+	  width: 64px;
+	  height: 64px;
+	  display: block;
+	  object-fit: contain;
+	}
+    .brand-block h1 { font-size: 1.85rem; letter-spacing: 0.04em; line-height: 1.1; }
+    .brand-block p { opacity: 0.9; font-size: 0.95rem; margin-top: 4px; }
+
+    .status-pill {
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.92);
+    }
+
+    main { max-width: 1120px; margin: 0 auto; padding: 28px 18px 60px; }
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .registration-page {
+      min-height: calc(100vh - 130px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      background: var(--white);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(29,32,103,0.12);
+    }
+
+    .hero-content {
+      padding: 48px;
+      background:
+        radial-gradient(circle at top left, rgba(245,185,66,0.25), transparent 32%),
+        linear-gradient(180deg, #ffffff, #f9faff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(29,32,103,0.035) 0 2px, transparent 3px),
+        radial-gradient(circle at 75% 18%, rgba(29,32,103,0.035) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 80%, rgba(29,32,103,0.035) 0 2px, transparent 3px);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-logo { width: 190px; margin-bottom: 24px; }
+    .inari-logo-large {
+	  width: 220px;
+	  max-width: 100%;
+	  height: auto;
+	  display: block;
+	  object-fit: contain;
+	}
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-content h2 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1; color: var(--brand); margin-bottom: 18px; }
+    .subtitle { font-size: 1.15rem; color: #374151; margin-bottom: 24px; max-width: 640px; }
+    .info-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+    .info-card { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: #ffffff; }
+    .info-card strong { color: var(--brand); display: block; margin-bottom: 6px; }
+
+    .registration-form-panel {
+      padding: 38px;
+      background: var(--brand);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .form-card h3 { font-size: 1.55rem; margin-bottom: 8px; }
+    .form-card p { color: rgba(255,255,255,0.82); margin-bottom: 20px; font-size: 0.95rem; }
+    label { display: block; font-weight: 700; margin-bottom: 7px; font-size: 0.92rem; }
+
+    input {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 13px 14px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: 3px solid transparent;
+    }
+
+    input:focus { outline-color: rgba(245,185,66,0.85); }
+
+    .check-row {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.08);
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .check-row input { width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
+    .check-row label { margin: 0; font-weight: 500; line-height: 1.4; }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      background: var(--accent);
+      color: #1f2937;
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .message { display: none; margin-top: 15px; padding: 12px 14px; border-radius: 12px; font-weight: 700; font-size: 0.92rem; }
+    .message.ok { display: block; background: var(--success-bg); color: var(--success-text); }
+    .message.error { display: block; background: #fee2e2; color: var(--danger); }
+
+    .participant-banner {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--brand);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+    }
+
+    .participant-banner strong { color: var(--brand); }
+
+    section.content-section {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+    }
+
+    .section-title { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; color: var(--brand); }
+    .number { width: 42px; height: 42px; border-radius: 14px; background: var(--brand); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-weight: 900; flex: 0 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .tile { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: #fbfbfe; }
+    .tile h4 { color: var(--brand); margin-bottom: 8px; text-transform: uppercase; font-size: 0.94rem; letter-spacing: 0.04em; }
+    ul { padding-left: 22px; margin-top: 8px; }
+    li { margin-bottom: 9px; }
+    .scale { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+    .step { border-radius: 20px; padding: 20px; background: var(--brand-light); border: 1px solid #dfe2ff; }
+    .step span { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 50%; background: var(--brand); color: var(--white); font-weight: 900; margin-bottom: 12px; }
+    .step h4 { color: var(--brand); margin-bottom: 7px; }
+    .important { margin-top: 18px; background: #fff7ed; border-left: 5px solid var(--accent); padding: 16px 18px; border-radius: 14px; font-weight: 700; }
+    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .case-card { background: #f8fafc; border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .case-card h4 { color: var(--brand); margin-bottom: 8px; }
+    .next-section { display: flex; justify-content: center; margin: 24px 0 0; }
+    .next-section button { max-width: 360px; }
+
+    .quiz-intro { background: linear-gradient(135deg, var(--brand), #2f3491); color: #fff; border-radius: 24px; padding: 34px; margin-bottom: 22px; }
+    .quiz-intro h2 { font-size: 2rem; margin-bottom: 10px; }
+    .formulario-google { margin-top: 20px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #ffffff; }
+    .formulario-google iframe { display: block; width: 100%; min-height: 1350px; border: none; }
+    .placeholder-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 18px; padding: 22px; margin-top: 18px; }
+    .placeholder-box code { display: block; margin-top: 10px; padding: 12px; border-radius: 12px; background: #111827; color: #f9fafb; overflow-x: auto; }
+    .closing { text-align: center; background: linear-gradient(135deg, var(--brand), #2f3491); color: var(--white); padding: 46px 26px; }
+    .closing h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 12px; }
+    .closing .formula { font-size: 1.3rem; font-weight: 900; color: var(--accent); margin: 20px auto; max-width: 720px; }
+    footer { text-align: center; color: var(--muted); padding: 26px 18px 40px; font-size: 0.92rem; }
+
+    @media (max-width: 860px) {
+      .registration-page, .grid, .scale, .case-grid { grid-template-columns: 1fr; }
+      .hero-content, .registration-form-panel, section.content-section { padding: 24px; }
+      .header-brand { align-items: flex-start; }
+      .status-pill { width: 100%; }
+      .hero-logo { width: 160px; }
+      .inari-logo-large { width: 160px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-wrap">
+      <div class="header-brand">
+		<div class="logo-card" aria-label="Logo INARI Catering & Alimentos">
+		  <img src="logo-inari.png" alt="Logo INARI Catering & Alimentos" class="logo-mark">
+		</div>
+        <div class="brand-block">
+          <h1>INARI CATERING</h1>
+          <p>Capacitación en línea | Reglamento Interno y Disciplina</p>
+        </div>
+      </div>
+      <div class="status-pill" id="statusPill">Registro pendiente</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="pageRegistro">
+      <div class="registration-page">
+        <div class="hero-content">
+          <div class="hero-inner">
+		  <div class="hero-logo" aria-label="Logo INARI Catering & Alimentos">
+			  <img src="logo-inari.png" alt="Logo INARI Catering & Alimentos" class="inari-logo-large">
+		  </div>
+            <span class="eyebrow">Primera página | Registro obligatorio</span>
+            <h2>Trabajamos con reglas claras</h2>
+            <p class="subtitle">Capacitación en línea sobre disciplina, orden, higiene, inocuidad y cumplimiento del Reglamento Interno.</p>
+            <p>Para continuar con el contenido completo de la capacitación, primero debes registrar tus datos. Al confirmar el registro, avanzarás automáticamente a la siguiente página.</p>
+            <div class="info-cards">
+              <div class="info-card"><strong>Empresa</strong>INARI Catering & Alimentos</div>
+              <div class="info-card"><strong>Organización</strong>CORPAG S.A.</div>
+              <div class="info-card"><strong>Modalidad</strong>Capacitación en línea</div>
+              <div class="info-card"><strong>Tema</strong>Reglamento Interno y Disciplina</div>
+            </div>
+          </div>
+        </div>
+        <div class="registration-form-panel">
+          <form class="form-card" id="trainingForm">
+            <h3>Registro del participante</h3>
+            <p>Completa todos los campos para habilitar la capacitación.</p>
+            <label for="nombre">Nombre y Apellido</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required />
+            <label for="cedula">Número de cédula</label>
+            <input type="text" id="cedula" name="cedula" placeholder="Ej. 0912345678" required />
+            <label for="sede">Sede</label>
+            <input type="text" id="sede" name="sede" placeholder="Ej. Planta / Cliente / Ciudad" required />
+            <label for="jefe">Jefe inmediato</label>
+            <input type="text" id="jefe" name="jefe" placeholder="Nombre del jefe inmediato" required />
+            <div class="check-row">
+              <input type="checkbox" id="confirmacion" name="confirmacion" required />
+              <label for="confirmacion">Confirmo que he ingresado mis datos para fines de registro de capacitación.</label>
+            </div>
+            <button type="submit">Confirmar registro y continuar</button>
+            <div id="formMessage" class="message" role="alert"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="pageContenido">
+      <div class="participant-banner" id="participantBanner"><strong>Participante registrado:</strong> capacitación habilitada.</div>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">1</span><h2>¿Qué buscamos con esta capacitación?</h2></div>
+        <ul><li>Que todos conozcan las reglas antes de que exista una sanción.</li><li>Reducir atrasos, faltas, descuidos, pérdidas, desorden e incumplimientos de higiene.</li><li>Proteger la seguridad alimentaria, los bienes de CORPAG S.A. y los bienes de nuestros clientes.</li><li>Aplicar medidas disciplinarias de forma documentada, proporcional y consistente.</li><li>Recordar que cada colaborador es responsable de su conducta, su puesto y las tareas asignadas.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">2</span><h2>Obligaciones básicas de todo colaborador</h2></div>
+        <div class="grid"><div class="tile"><h4>Puntualidad</h4><p>Registrar personalmente entrada y salida, respetar horarios y justificar ausencias.</p></div><div class="tile"><h4>Presentación</h4><p>Usar el uniforme completo otorgado por la empresa, mantener aseo personal y utilizar los implementos requeridos.</p></div><div class="tile"><h4>Cumplimiento</h4><p>Acatar instrucciones legítimas y realizar las tareas asignadas con responsabilidad.</p></div><div class="tile"><h4>Orden y limpieza</h4><p>Mantener cocina, comedor, bodega, vehículos y áreas asignadas limpias y ordenadas, incluyendo comedores institucionales.</p></div><div class="tile"><h4>Inocuidad y seguridad</h4><p>Cumplir BPM, medidas sanitarias, higiene, prevención y uso de EPP.</p></div><div class="tile"><h4>Cuidado de bienes</h4><p>Cuidar utensilios, equipos, insumos, vehículos y bienes de CORPAG S.A. y del cliente.</p></div></div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">3</span><h2>Situaciones que generan llamados de atención</h2></div>
+        <ul><li>Llegar tarde o no realizar la marcación correspondiente. Tres atrasos en un mes serán considerados como falta.</li><li>Dejar el área de trabajo sucia, desordenada o sin completar el checklist de limpieza correspondiente.</li><li>No usar uniforme, gorro, mascarilla o EPP en las instalaciones o durante el servicio.</li><li>No enviar reportes, fotografías o controles solicitados diariamente.</li><li>Abandonar el puesto o salir sin autorización.</li><li>Distraerse, dormir o realizar actividades personales durante la jornada.</li><li>Ingresar teléfonos celulares a la planta cuando no corresponda.</li><li>No cuidar adecuadamente vehículos, utensilios, equipos o materiales asignados.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">4</span><h2>Bienes e insumos de INARI y del cliente</h2></div>
+        <p>Los bienes, insumos, utensilios, equipos, vehículos, productos y materiales asignados deben ser utilizados únicamente para fines laborales autorizados. Cada colaborador debe proteger los recursos de la empresa y del cliente, reportar daños, pérdidas o novedades, y evitar cualquier uso indebido o no autorizado.</p>
+        <ul><li>Cuidar los bienes de CORPAG S.A., INARI y de los clientes.</li><li>Reportar inmediatamente daños, faltantes, pérdidas o novedades.</li><li>No retirar productos, materia prima, descartables, herramientas, documentos u otros recursos sin autorización.</li><li>Usar vehículos, equipos y utensilios de forma responsable.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">5</span><h2>Higiene e inocuidad: NO son negociables</h2></div>
+        <ul><li>El incumplimiento de medidas sanitarias, de higiene, prevención o seguridad puede escalar a una falta grave según las circunstancias.</li><li>Las áreas deben quedar limpias y ordenadas todos los días; no basta con limpiar únicamente cuando existe una inspección.</li><li>El uniforme y los implementos de protección deben utilizarse correctamente.</li><li>Los alimentos deben manipularse siguiendo los procedimientos establecidos por INARI.</li><li>Una mala práctica puede afectar a un compañero, a un comensal, al cliente y a toda la empresa.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">6</span><h2>¿Cómo funciona la escala disciplinaria?</h2></div>
+        <div class="scale"><div class="step"><span>1</span><h4>Amonestación verbal</h4><p>Para incumplimientos menores, según el caso.</p></div><div class="step"><span>2</span><h4>Amonestación escrita</h4><p>Se documenta y queda en el expediente.</p></div><div class="step"><span>3</span><h4>Multa</h4><p>Puede ser de hasta el 10% de la remuneración, según gravedad, reincidencia y perjuicio.</p></div><div class="step"><span>4</span><h4>Falta grave / Visto Bueno</h4><p>Para conductas graves o reincidencias que correspondan conforme al Reglamento y la ley.</p></div></div>
+        <div class="important">IMPORTANTE: el 10% es un tope, no una multa automática para cualquier falta. Las sanciones deben evaluarse caso por caso.</div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">7</span><h2>Conductas que pueden considerarse graves</h2></div>
+        <ul><li>Alterar marcaciones, controles, reportes o indicadores.</li><li>Presentar certificados o documentos falsos.</li><li>Sustraer o intentar sustraer dinero, materia prima, productos, herramientas o documentos.</li><li>Dañar deliberadamente bienes de la empresa o del cliente.</li><li>Ocultar daños o hechos que puedan perjudicar a la empresa.</li><li>Peleas, faltas graves de respeto, indisciplina o desobediencia grave.</li><li>Acoso, discriminación u hostigamiento.</li><li>Transgresiones graves a las disposiciones de seguridad e higiene.</li><li>No notificar ausencias en los tiempos determinados, incluyendo citas médicas.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">8</span><h2>Toda sanción debe quedar respaldada</h2></div>
+        <p>Las medidas disciplinarias deben sustentarse en información clara y verificable. La documentación permite aplicar decisiones proporcionales, consistentes y justas, de acuerdo con el Reglamento Interno y la normativa aplicable.</p>
+        <ul><li>Registrar fechas, horarios y hechos relevantes.</li><li>Conservar reportes, fotografías, checklists, controles o comunicaciones cuando corresponda.</li><li>Evaluar cada caso según gravedad, reincidencia y perjuicio generado.</li><li>Mantener respaldo en el expediente cuando exista amonestación escrita, multa u otra medida formal.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">9</span><h2>Casos prácticos: ¿qué harías tú?</h2></div>
+        <div class="case-grid"><div class="case-card"><h4>Caso A</h4><p>Termina el turno y el área queda sucia. El checklist aparece firmado como completado.</p></div><div class="case-card"><h4>Caso B</h4><p>Un colaborador toma descartables del cliente para llevárselos sin autorización.</p></div><div class="case-card"><h4>Caso C</h4><p>Un chofer no reporta un golpe del vehículo y el daño se descubre al día siguiente.</p></div><div class="case-card"><h4>Caso D</h4><p>Un trabajador llega tarde varias veces y no registra correctamente sus marcaciones.</p></div></div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">10</span><h2>Lo que esperamos de cada colaborador</h2></div>
+        <ul><li>Cumplir las reglas incluso cuando no haya un supervisor mirando.</li><li>Preguntar cuando exista una duda, antes de actuar incorrectamente.</li><li>Reportar inmediatamente errores, daños, faltantes o riesgos.</li><li>Cuidar el trabajo propio y respetar el trabajo de los demás.</li><li>Entender que la disciplina protege nuestro empleo, nuestra reputación y la confianza de nuestros clientes.</li><li>Nuestro estándar debe ser el mismo todos los días y en todos los puntos.</li></ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-title"><span class="number">11</span><h2>Compromiso del equipo</h2></div>
+        <p>Como parte de INARI Catering & Alimentos, cada colaborador asume el compromiso de trabajar con responsabilidad, respetar las reglas internas, proteger la inocuidad alimentaria, cuidar los bienes asignados y mantener una conducta adecuada en beneficio del equipo, del cliente y de la empresa.</p>
+        <div class="important">Orden + Responsabilidad + Inocuidad = Un mejor servicio</div>
+      </section>
+
+      <section class="content-section closing">
+        <h2>Gracias por ser parte de INARI</h2>
+        <p class="formula">ORDEN + RESPONSABILIDAD + INOCUIDAD = UN MEJOR SERVICIO</p>
+        <p>INARI CATERING & ALIMENTOS | CORPAG S.A. | Capacitación interna</p>
+      </section>
+
+      <div class="next-section"><button type="button" id="goQuiz">Ir a la prueba</button></div>
+    </section>
+
+    <section class="page" id="pagePrueba">
+      <div class="quiz-intro">
+        <span class="eyebrow">Evaluación final</span>
+        <h2>Prueba de capacitación</h2>
+        <p>Completa el formulario de Google, recuerda llenar tus datos y asegurar el correcto envío de la prueba.</p>
+      </div>
+
+<section class="content-section">
+  <div class="section-title">
+    <span class="number">12</span>
+    <h2>Formulario de evaluación</h2>
+  </div>
+
+  <div class="formulario-google">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdkSjQOvyT3GFW9qzaTOzipz4eI1jUK-CvLrcwTdyzsEbr0Gw/viewform?usp=dialog"
+      width="100%" 
+      height="1350" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Cargando…
+    </iframe>
+  </div>
+</section>
+  </main>
+
+  <footer>Material de capacitación interna basado en el documento “Trabajamos con reglas claras”.</footer>
+
+  <script>
+    const form = document.getElementById('trainingForm');
+    const message = document.getElementById('formMessage');
+    const pageRegistro = document.getElementById('pageRegistro');
+    const pageContenido = document.getElementById('pageContenido');
+    const pagePrueba = document.getElementById('pagePrueba');
+    const statusPill = document.getElementById('statusPill');
+    const participantBanner = document.getElementById('participantBanner');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = {
+        nombre: document.getElementById('nombre').value.trim(),
+        cedula: document.getElementById('cedula').value.trim(),
+        sede: document.getElementById('sede').value.trim(),
+        jefe: document.getElementById('jefe').value.trim(),
+        confirmacion: document.getElementById('confirmacion').checked,
+        fechaRegistro: new Date().toLocaleString('es-EC')
+      };
+
+      if (!data.nombre || !data.cedula || !data.sede || !data.jefe || !data.confirmacion) {
+        message.className = 'message error';
+        message.textContent = 'Por favor completa todos los campos y confirma el registro.';
+        return;
+      }
+
+      message.className = 'message ok';
+      message.textContent = 'Registro confirmado. Cargando la capacitación...';
+      setTimeout(function() {
+        pageRegistro.classList.remove('active');
+        pageContenido.classList.add('active');
+        statusPill.textContent = 'Registro confirmado';
+        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Sede: ' + data.sede + ' | Jefe inmediato: ' + data.jefe + ' | Fecha: ' + data.fechaRegistro;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 450);
+    });
+
+    document.getElementById('goQuiz').addEventListener('click', function() {
+      pageContenido.classList.remove('active');
+      pagePrueba.classList.add('active');
+      statusPill.textContent = 'Prueba final';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
