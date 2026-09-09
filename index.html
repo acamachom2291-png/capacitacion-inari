@@ -23,7 +23,15 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-
+	
+	.content-section p,
+	.content-section li,
+	.hero-content p,
+	.info-card,
+	.participant-banner {
+	  text-align: justify;
+	}
+	
     header {
       background: linear-gradient(135deg, var(--brand), var(--brand-dark));
       color: var(--white);
@@ -110,12 +118,16 @@
     }
 
     .hero-inner { position: relative; z-index: 1; }
-    .hero-logo { width: 190px; margin-bottom: 24px; }
-    .inari-logo-large {
-	  width: 220px;
-	  max-width: 100%;
-	  height: auto;
-	  display: block;
+    .hero-logo { 
+	  width: 190px; 
+	  margin: 0 auto 24px auto; 
+	}
+	.inari-logo-large { 
+	  width: 190px; 
+	  height: auto; 
+	  display: block; 
+	  margin: 0 auto;
+	}
 	  object-fit: contain;
 	}
 
@@ -197,6 +209,36 @@
       cursor: pointer;
       transition: 0.2s ease;
     }
+	
+	.quiz-button {
+  width: 100%;
+  max-width: 360px;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  background: var(--accent);
+  color: #1f2937;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.quiz-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+/* Estilo para centrar el botón */
+.quiz-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 24px 0;
+}
 
     button:hover { transform: translateY(-1px); filter: brightness(1.03); }
     .message { display: none; margin-top: 15px; padding: 12px 14px; border-radius: 12px; font-weight: 700; font-size: 0.92rem; }
@@ -381,43 +423,29 @@
       <section class="content-section">
         <div class="section-title"><span class="number">11</span><h2>Compromiso del equipo</h2></div>
         <p>Como parte de INARI Catering & Alimentos, cada colaborador asume el compromiso de trabajar con responsabilidad, respetar las reglas internas, proteger la inocuidad alimentaria, cuidar los bienes asignados y mantener una conducta adecuada en beneficio del equipo, del cliente y de la empresa.</p>
-        <div class="important">Orden + Responsabilidad + Inocuidad = Un mejor servicio</div>
-      </section>
-
-      <section class="content-section closing">
-        <h2>Gracias por ser parte de INARI</h2>
+        
+	<section class="content-section closing">
         <p class="formula">ORDEN + RESPONSABILIDAD + INOCUIDAD = UN MEJOR SERVICIO</p>
-        <p>INARI CATERING & ALIMENTOS | CORPAG S.A. | Capacitación interna</p>
+    </section>
+		
+		
       </section>
 
-      <div class="next-section"><button type="button" id="goQuiz">Ir a la prueba</button></div>
-    </section>
 
-    <section class="page" id="pagePrueba">
-      <div class="quiz-intro">
-        <span class="eyebrow">Evaluación final</span>
-        <h2>Prueba de capacitación</h2>
-        <p>Completa el formulario de Google, recuerda llenar tus datos y asegurar el correcto envío de la prueba.</p>
-      </div>
+		<div class="section-title"><span class="number">12</span><h2>Prueba de capacitación</h2></div>
+		<div class="important">Al continuar, iniciarás el proceso de prueba sobre lo revisado en este contenido. Asegurate de registrar tus datos y respuestas correctamente.</div>
 
-<section class="content-section">
-  <div class="section-title">
-    <span class="number">12</span>
-    <h2>Formulario de evaluación</h2>
-  </div>
-
-  <div class="formulario-google">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdkSjQOvyT3GFW9qzaTOzipz4eI1jUK-CvLrcwTdyzsEbr0Gw/viewform?usp=dialog"
-      width="100%" 
-      height="1350" 
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
-      Cargando…
-    </iframe>
-  </div>
-</section>
+		<!-- Contenedor para centrar -->
+		<div class="quiz-button-container">
+		  <a 
+			href="https://forms.gle/ZvntJEAEn8Gk3hJj8" 
+			class="quiz-button" 
+			target="_blank" 
+			rel="noopener noreferrer">
+			Ir a la prueba
+		  </a>
+		</div>
+	  
   </main>
 
   <footer>Material de capacitación interna basado en el documento “Trabajamos con reglas claras”.</footer>
@@ -459,12 +487,7 @@
       }, 450);
     });
 
-    document.getElementById('goQuiz').addEventListener('click', function() {
-      pageContenido.classList.remove('active');
-      pagePrueba.classList.add('active');
-      statusPill.textContent = 'Prueba final';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+
   </script>
 </body>
 </html>
