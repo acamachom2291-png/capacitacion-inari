@@ -433,41 +433,40 @@
 
   <footer>Material de capacitación interna basado en el documento: Capacitacion_Reglamento_Disciplina_INARI_CORPAG.pdf.</footer>
 
-  <script>
-    const form = document.getElementById('trainingForm');
-    const message = document.getElementById('formMessage');
-    const pageRegistro = document.getElementById('pageRegistro');
-    const pageContenido = document.getElementById('pageContenido');
-    const pagePrueba = document.getElementById('pagePrueba');
-    const statusPill = document.getElementById('statusPill');
-    const participantBanner = document.getElementById('participantBanner');
+   <script>
+    document.querySelector('button').addEventListener('click', function(e) {
+      e.preventDefault(); // Evita que la página se recargue por defecto
+      
+      // Obtener los inputs del formulario
+      const nombre = document.querySelector('input[type="text"]').value;
+      const terminos = document.querySelector('input[type="checkbox"]').checked;
+      const mensaje = document.querySelector('.message');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const data = {
-        nombre: document.getElementById('nombre').value.trim(),
-        cedula: document.getElementById('cedula').value.trim(),
-        confirmacion: document.getElementById('confirmacion').checked,
-        fechaRegistro: new Date().toLocaleString('es-EC')
-      };
-
-      if (!data.nombre || !data.cedula || !data.confirmacion) {
-        message.className = 'message error';
-        message.textContent = 'Por favor completa todos los campos y confirma el registro.';
+      // Validación simple
+      if (nombre.trim() === "" || !terminos) {
+        mensaje.className = "message error";
+        mensaje.textContent = "Por favor, ingresa tu nombre y acepta los términos.";
+        mensaje.style.display = "block";
         return;
       }
 
-      message.className = 'message ok';
-      message.textContent = 'Registro confirmado. Cargando la capacitación...';
-      setTimeout(function() {
-        pageRegistro.classList.remove('active');
-        pageContenido.classList.add('active');
-        statusPill.textContent = 'Registro confirmado';
-        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Fecha: ' + data.fechaRegistro;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 450);
-    });
+      // Si todo está bien, ocultamos la página de registro y mostramos la siguiente
+      mensaje.className = "message ok";
+      mensaje.textContent = "¡Registro exitoso! Cargando capacitación...";
+      mensaje.style.display = "block";
 
+      setTimeout(() => {
+        // Cambiar entre secciones/páginas (asumiendo que usas las clases .page y .active)
+        document.querySelector('.registration-page').classList.remove('active');
+        
+        // REEMPLAZA '.siguiente-pagina' por el ID o clase de tu sección de capacitación
+        const infoPage = document.querySelector('.content-section'); 
+        if(infoPage) infoPage.classList.add('active');
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
 
   </script>
 </body>
