@@ -447,13 +447,11 @@
       const data = {
         nombre: document.getElementById('nombre').value.trim(),
         cedula: document.getElementById('cedula').value.trim(),
-        sede: document.getElementById('sede').value.trim(),
-        jefe: document.getElementById('jefe').value.trim(),
         confirmacion: document.getElementById('confirmacion').checked,
         fechaRegistro: new Date().toLocaleString('es-EC')
       };
 
-      if (!data.nombre || !data.cedula || !data.sede || !data.jefe || !data.confirmacion) {
+      if (!data.nombre || !data.cedula || !data.confirmacion) {
         message.className = 'message error';
         message.textContent = 'Por favor completa todos los campos y confirma el registro.';
         return;
@@ -465,7 +463,7 @@
         pageRegistro.classList.remove('active');
         pageContenido.classList.add('active');
         statusPill.textContent = 'Registro confirmado';
-        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Sede: ' + data.sede + ' | Jefe inmediato: ' + data.jefe + ' | Fecha: ' + data.fechaRegistro;
+        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Fecha: ' + data.fechaRegistro;
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 450);
     });
