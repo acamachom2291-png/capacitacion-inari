@@ -172,17 +172,29 @@
     .form-card p { color: rgba(255,255,255,0.82); margin-bottom: 20px; font-size: 0.95rem; }
     label { display: block; font-weight: 700; margin-bottom: 7px; font-size: 0.92rem; }
 
-    input {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 13px 14px;
-      margin-bottom: 16px;
-      font-size: 1rem;
-      outline: 3px solid transparent;
-    }
+		.form-card input[type="text"],
+		.form-card select {
+		  width: 100%;
+		  border: none;
+		  border-radius: 12px;
+		  padding: 13px 14px;
+		  margin-bottom: 16px;
+		  font-size: 1rem;
+		  outline: 3px solid transparent;
+		  color: #1f2937;
+		  background: #ffffff;
+		  font-family: Arial, Helvetica, sans-serif;
+		  display: block;
+		}
 
-    input:focus { outline-color: rgba(245,185,66,0.85); }
+		.form-card input[type="text"]:focus,
+		.form-card select:focus {
+		  outline-color: rgba(245,185,66,0.85);
+		}
+
+		.form-card input[type="text"]::placeholder {
+		  color: #7a7a7a;
+		}
 
     .check-row {
       display: flex;
@@ -194,7 +206,12 @@
       margin-bottom: 18px;
     }
 
-    .check-row input { width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
+    .check-row input[type="checkbox"] {
+	  width: 18px;
+	  height: 18px;
+	  margin: 3px 0 0;
+	  flex: 0 0 auto;
+	}
     .check-row label { margin: 0; font-weight: 500; line-height: 1.4; }
 
     button {
@@ -349,11 +366,23 @@
             <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required />
             <label for="cedula">Número de cédula</label>
             <input type="text" id="cedula" name="cedula" placeholder="Ej. 0912345678" required />
-            <label for="sede">Sede</label>
-            <input type="text" id="sede" name="sede" placeholder="Ej. Planta / Cliente / Ciudad" required />
-            <label for="jefe">Jefe inmediato</label>
-            <input type="text" id="jefe" name="jefe" placeholder="Nombre del jefe inmediato" required />
-            <div class="check-row">
+			<label for="jornada">Jornada</label>
+			<select id="jornada" name="jornada" required>
+			  <option value="">Seleccione una jornada</option>
+			  <option value="Medio Tiempo">Medio Tiempo</option>
+			  <option value="Tiempo completo">Tiempo completo</option>
+			</select>
+			<label for="area">Área</label>
+			<select id="area" name="area" required>
+			  <option value="">Seleccione un área</option>
+			  <option value="Servicio">Servicio</option>
+			  <option value="Cocina">Cocina</option>
+			  <option value="Servicio/Cocina">Servicio/Cocina</option>
+			  <option value="Administrativo">Administrativo</option>
+			  <option value="Operaciones">Operaciones</option>
+			</select>
+			<div class="check-row">
+			
               <input type="checkbox" id="confirmacion" name="confirmacion" required />
               <label for="confirmacion">Confirmo que he ingresado mis datos para fines de registro de capacitación.</label>
             </div>
@@ -464,17 +493,16 @@
       const data = {
         nombre: document.getElementById('nombre').value.trim(),
         cedula: document.getElementById('cedula').value.trim(),
-        sede: document.getElementById('sede').value.trim(),
-        jefe: document.getElementById('jefe').value.trim(),
+		jornada = document.getElementById('jornada').value;
+		area = document.getElementById('area').value;
         confirmacion: document.getElementById('confirmacion').checked,
         fechaRegistro: new Date().toLocaleString('es-EC')
       };
 
-      if (!data.nombre || !data.cedula || !data.sede || !data.jefe || !data.confirmacion) {
-        message.className = 'message error';
-        message.textContent = 'Por favor completa todos los campos y confirma el registro.';
-        return;
-      }
+      if (!nombre || !rut || !cargo || !jornada || !area) {
+		  mostrarMensaje('Debes completar todos los campos obligatorios.', 'error');
+		  return;
+		}
 
       message.className = 'message ok';
       message.textContent = 'Registro confirmado. Cargando la capacitación...';
@@ -482,7 +510,7 @@
         pageRegistro.classList.remove('active');
         pageContenido.classList.add('active');
         statusPill.textContent = 'Registro confirmado';
-        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Sede: ' + data.sede + ' | Jefe inmediato: ' + data.jefe + ' | Fecha: ' + data.fechaRegistro;
+        participantBanner.innerHTML = '<strong>Participante registrado:</strong> ' + data.nombre + ' | Cédula: ' + data.cedula + ' | Jornada: ' + data.jornada + ' | Área: ' + data.area + ' | Fecha: ' + data.fechaRegistro;
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 450);
     });
