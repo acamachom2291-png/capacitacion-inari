@@ -128,8 +128,6 @@
 	  display: block; 
 	  margin: 0 auto;
 	}
-	  object-fit: contain;
-	}
 
     .eyebrow {
       display: inline-flex;
@@ -180,6 +178,7 @@
       margin-bottom: 16px;
       font-size: 1rem;
       outline: 3px solid transparent;
+      color: #1f2937;
     }
 
     input:focus { outline-color: rgba(245,185,66,0.85); }
@@ -195,7 +194,7 @@
     }
 
     .check-row input { width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
-    .check-row label { margin: 0; font-weight: 500; line-height: 1.4; }
+    .check-row label { margin: 0; font-weight: 500; line-height: 1.4; color: var(--white); }
 
     button {
       width: 100%;
@@ -211,34 +210,33 @@
     }
 	
 	.quiz-button {
-  width: 100%;
-  max-width: 360px;
-  border: none;
-  border-radius: 14px;
-  padding: 14px 18px;
-  background: var(--accent);
-  color: #1f2937;
-  font-weight: 900;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.2s ease;
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-}
+      width: 100%;
+      max-width: 360px;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      background: var(--accent);
+      color: #1f2937;
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
 
-.quiz-button:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.03);
-}
+    .quiz-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
 
-/* Estilo para centrar el botón */
-.quiz-button-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 24px 0;
-}
+    .quiz-button-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 24px 0;
+    }
 
     button:hover { transform: translateY(-1px); filter: brightness(1.03); }
     .message { display: none; margin-top: 15px; padding: 12px 14px; border-radius: 12px; font-weight: 700; font-size: 0.92rem; }
@@ -278,28 +276,13 @@
     .step span { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 50%; background: var(--brand); color: var(--white); font-weight: 900; margin-bottom: 12px; }
     .step h4 { color: var(--brand); margin-bottom: 7px; }
     .important { margin-top: 18px; background: #fff7ed; border-left: 5px solid var(--accent); padding: 16px 18px; border-radius: 14px; font-weight: 700; }
-    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .case-card { background: #f8fafc; border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
-    .case-card h4 { color: var(--brand); margin-bottom: 8px; }
-    .next-section { display: flex; justify-content: center; margin: 24px 0 0; }
-    .next-section button { max-width: 360px; }
-
-    .quiz-intro { background: linear-gradient(135deg, var(--brand), #2f3491); color: #fff; border-radius: 24px; padding: 34px; margin-bottom: 22px; }
-    .quiz-intro h2 { font-size: 2rem; margin-bottom: 10px; }
-    .formulario-google { margin-top: 20px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #ffffff; }
-    .formulario-google iframe { display: block; width: 100%; min-height: 1350px; border: none; }
-    .placeholder-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 18px; padding: 22px; margin-top: 18px; }
-    .placeholder-box code { display: block; margin-top: 10px; padding: 12px; border-radius: 12px; background: #111827; color: #f9fafb; overflow-x: auto; }
-    .closing { text-align: center; background: linear-gradient(135deg, var(--brand), #2f3491); color: var(--white); padding: 46px 26px; }
-    .closing h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 12px; }
-    .closing .formula { font-size: 1.3rem; font-weight: 900; color: var(--accent); margin: 20px auto; max-width: 720px; }
     footer { text-align: center; color: var(--muted); padding: 26px 18px 40px; font-size: 0.92rem; }
 
     @media (max-width: 860px) {
-      .registration-page, .grid, .scale, .case-grid { grid-template-columns: 1fr; }
+      .registration-page, .grid, .scale { grid-template-columns: 1fr; }
       .hero-content, .registration-form-panel, section.content-section { padding: 24px; }
       .header-brand { align-items: flex-start; }
-      .status-pill { width: 100%; }
+      .status-pill { width: 100%; text-align: center; }
       .hero-logo { width: 160px; }
       .inari-logo-large { width: 160px; }
     }
@@ -322,88 +305,107 @@
   </header>
 
   <main>
+    <!-- PÁGINA 1: REGISTRO OBLIGATORIO -->
     <section class="page active" id="pageRegistro">
       <div class="registration-page">
-        <div class="hero-content">
-          <div class="hero-inner">
-		  <div class="hero-logo" aria-label="Logo INARI Catering & Alimentos">
-			  <img src="logo-inari.png" alt="Logo INARI Catering & Alimentos" class="inari-logo-large">
-		  </div>
-            <span class="eyebrow">Primera página | Registro obligatorio</span>
-            <h2>Trabajamos con reglas claras</h2>
-            <p class="subtitle">Capacitación en línea sobre disciplina, orden, higiene, inocuidad y cumplimiento del Reglamento Interno.</p>
-            <p>Para continuar con el contenido completo de la capacitación, primero debes registrar tus datos. Al confirmar el registro, avanzarás automáticamente a la siguiente página.</p>
-            <div class="info-cards">
-              <div class="info-card"><strong>Empresa</strong>INARI Catering & Alimentos</div>
-              <div class="info-card"><strong>Organización</strong>CORPAG S.A.</div>
-              <div class="info-card"><strong>Modalidad</strong>Capacitación en línea</div>
-              <div class="info-card"><strong>Tema</strong>Reglamento Interno y Disciplina</div>
-            </div>
-          </div>
-        </div>
-        <div class="registration-form-panel">
-          <form class="form-card" id="trainingForm">
-            <h3>Registro del participante</h3>
-            <p>Completa todos los campos para habilitar la capacitación.</p>
-            <label for="nombre">Nombre y Apellido</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required />
-            <label for="cedula">Número de cédula</label>
-            <input type="text" id="cedula" name="cedula" placeholder="Ej. 0912345678" required />
-            <div class="check-row">
-              <input type="checkbox" id="confirmacion" name="confirmacion" required />
-              <label for="confirmacion">Confirmo que he ingresado mis datos para fines de registro de capacitación.</label>
-            </div>
-            <button type="submit">Confirmar registro y continuar</button>
-            <div id="formMessage" class="message" role="alert"></div>
-          </form>
-        </div>
+		<div class="participant-banner" id="participantBanner">
+        <strong>Participante registrado:</strong> <span id="nombreParticipante"></span> | Capacitación habilitada.
       </div>
-    </section>
-
-    <section class="page" id="pageContenido">
-      <div class="participant-banner" id="participantBanner"><strong>Participante registrado:</strong> capacitación habilitada.</div>
 
       <section class="content-section">
         <div class="section-title"><span class="number">1</span><h2>¿Qué buscamos con esta capacitación?</h2></div>
-        <ul><li>Que todos conozcan las reglas antes de que exista una sanción.</li><li>Reducir atrasos, faltas, descuidos, pérdidas, desorden e incumplimientos de higiene.</li><li>Proteger la seguridad alimentaria, los bienes de CORPAG S.A. y los bienes de nuestros clientes.</li><li>Aplicar medidas disciplinarias de forma documentada, proporcional y consistente.</li><li>Recordar que cada colaborador es responsable de su conducta, su puesto y las tareas asignadas.</li></ul>
+        <ul>
+          <li>Que todos conozcan las reglas antes de que exista una sanción.</li>
+          <li>Reducir atrasos, faltas, descuidos, pérdidas, desorden e incumplimientos de higiene.</li>
+          <li>Proteger la seguridad alimentaria, los bienes de CORPAG S.A. y los bienes de nuestros clientes.</li>
+          <li>Aplicar medidas disciplinarias de forma documentada, proporcional y consistente.</li>
+          <li>Recordar que cada colaborador es responsable de su conducta, su puesto y las tareas asignadas.</li>
+        </ul>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">2</span><h2>Obligaciones básicas de todo colaborador</h2></div>
-        <div class="grid"><div class="tile"><h4>Puntualidad</h4><p>Registrar personalmente entrada y salida, respetar horarios y justificar ausencias.</p></div><div class="tile"><h4>Presentación</h4><p>Usar el uniforme completo otorgado por la empresa, mantener aseo personal y utilizar los implementos requeridos.</p></div><div class="tile"><h4>Cumplimiento</h4><p>Acatar instrucciones legítimas y realizar las tareas asignadas con responsabilidad.</p></div><div class="tile"><h4>Orden y limpieza</h4><p>Mantener cocina, comedor, bodega, vehículos y áreas asignadas limpias y ordenadas, incluyendo comedores institucionales.</p></div><div class="tile"><h4>Inocuidad y seguridad</h4><p>Cumplir BPM, medidas sanitarias, higiene, prevención y uso de EPP.</p></div><div class="tile"><h4>Cuidado de bienes</h4><p>Cuidar utensilios, equipos, insumos, vehículos y bienes de CORPAG S.A. y del cliente.</p></div></div>
+        <div class="grid">
+          <div class="tile"><h4>Puntualidad</h4><p>Registrar personalmente entrada y salida, respetar horarios y justificar ausencias.</p></div>
+          <div class="tile"><h4>Presentación</h4><p>Usar el uniforme completo otorgado por la empresa, mantener aseo personal y utilizar los implementos requeridos.</p></div>
+          <div class="tile"><h4>Cumplimiento</h4><p>Acatar instrucciones legítimas y realizar las tareas asignadas con responsabilidad.</p></div>
+          <div class="tile"><h4>Orden y limpieza</h4><p>Mantener cocina, comedor, bodega, vehículos y áreas asignadas limpias y ordenadas, incluyendo comedores institucionales.</p></div>
+          <div class="tile"><h4>Inocuidad y seguridad</h4><p>Cumplir BPM, medidas sanitarias, higiene, prevención y uso de EPP.</p></div>
+          <div class="tile"><h4>Cuidado de bienes</h4><p>Cuidar utensilios, equipos, insumos, vehículos y bienes de CORPAG S.A. y del cliente.</p></div>
+        </div>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">3</span><h2>Situaciones que generan llamados de atención</h2></div>
-        <ul><li>Llegar tarde o no realizar la marcación correspondiente. Tres atrasos en un mes serán considerados como falta.</li><li>Dejar el área de trabajo sucia, desordenada o sin completar el checklist de limpieza correspondiente.</li><li>No usar uniforme, gorro, mascarilla o EPP en las instalaciones o durante el servicio.</li><li>No enviar reportes, fotografías o controles solicitados diariamente.</li><li>Abandonar el puesto o salir sin autorización.</li><li>Distraerse, dormir o realizar actividades personales durante la jornada.</li><li>Ingresar teléfonos celulares a la planta cuando no corresponda.</li><li>No cuidar adecuadamente vehículos, utensilios, equipos o materiales asignados.</li></ul>
+        <ul>
+          <li>Llegar tarde o no realizar la marcación correspondiente. Tres atrasos en un mes serán considerados como falta.</li>
+          <li>Dejar el área de trabajo sucia, desordenada o sin completar el checklist de limpieza correspondiente.</li>
+          <li>No usar uniforme, gorro, mascarilla o EPP en las instalaciones o durante el servicio.</li>
+          <li>No enviar reportes, fotografías o controles solicitados diariamente.</li>
+          <li>Abandonar el puesto o salir sin autorización.</li>
+          <li>Distraerse, dormir o realizar actividades personales durante la jornada.</li>
+          <li>Ingresar teléfonos celulares a la planta cuando no corresponda.</li>
+          <li>No cuidar adecuadamente vehículos, utensilios, equipos o materiales asignados.</li>
+        </ul>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">4</span><h2>Bienes e insumos de INARI y del cliente</h2></div>
         <p>Los bienes, insumos, utensilios, equipos, vehículos, productos y materiales asignados deben ser utilizados únicamente para fines laborales autorizados. Cada colaborador debe proteger los recursos de la empresa y del cliente, reportar daños, pérdidas o novedades, y evitar cualquier uso indebido o no autorizado.</p>
-        <ul><li>Cuidar los bienes de CORPAG S.A., INARI y de los clientes.</li><li>Reportar inmediatamente daños, faltantes, pérdidas o novedades.</li><li>No retirar productos, materia prima, descartables, herramientas, documentos u otros recursos sin autorización.</li><li>Usar vehículos, equipos y utensilios de forma responsable.</li></ul>
+        <ul>
+          <li>Cuidar los bienes de CORPAG S.A., INARI y de los clientes.</li>
+          <li>Reportar inmediatamente daños, faltantes, pérdidas o novedades.</li>
+          <li>No retirar productos, materia prima, descartables, herramientas, documentos u otros recursos sin autorización.</li>
+          <li>Usar vehículos, equipos y utensilios de forma responsable.</li>
+        </ul>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">5</span><h2>Higiene e inocuidad: NO son negociables</h2></div>
-        <ul><li>El incumplimiento de medidas sanitarias, de higiene, prevención o seguridad puede escalar a una falta grave según las circunstancias.</li><li>Las áreas deben quedar limpias y ordenadas todos los días; no basta con limpiar únicamente cuando existe una inspección.</li><li>El uniforme y los implementos de protección deben utilizarse correctamente.</li><li>Los alimentos deben manipularse siguiendo los procedimientos establecidos por INARI.</li><li>Una mala práctica puede afectar a un compañero, a un comensal, al cliente y a toda la empresa.</li></ul>
+        <ul>
+          <li>El incumplimiento de medidas sanitarias, de higiene, prevención o seguridad puede escalar a una falta grave según las circunstancias.</li>
+          <li>Las áreas deben quedar limpias y ordenadas todos los días; no basta con limpiar únicamente cuando existe una inspección.</li>
+          <li>El uniforme y los implementos de protección deben utilizarse correctamente.</li>
+          <li>Los alimentos deben manipularse siguiendo los procedimientos establecidos por INARI.</li>
+          <li>Una mala práctica puede afectar a un compañero, a un comensal, al cliente y a toda la empresa.</li>
+        </ul>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">6</span><h2>¿Cómo funciona la escala disciplinaria?</h2></div>
-        <div class="scale"><div class="step"><span>1</span><h4>Amonestación verbal</h4><p>Para incumplimientos menores, según el caso.</p></div><div class="step"><span>2</span><h4>Amonestación escrita</h4><p>Se documenta y queda en el expediente.</p></div><div class="step"><span>3</span><h4>Multa</h4><p>Puede ser de hasta el 10% de la remuneración, según gravedad, reincidencia y perjuicio.</p></div><div class="step"><span>4</span><h4>Falta grave / Visto Bueno</h4><p>Para conductas graves o reincidencias que correspondan conforme al Reglamento y la ley.</p></div></div>
+        <div class="scale">
+          <div class="step"><span>1</span><h4>Amonestación verbal</h4><p>Para incumplimientos menores, según el caso.</p></div>
+          <div class="step"><span>2</span><h4>Amonestación escrita</h4><p>Se documenta y queda en el expediente.</p></div>
+          <div class="step"><span>3</span><h4>Multa</h4><p>Puede ser de hasta el 10% de la remuneración, según gravedad, reincidencia y perjuicio.</p></div>
+          <div class="step"><span>4</span><h4>Falta grave / Visto Bueno</h4><p>Para conductas graves o reincidencias que correspondan conforme al Reglamento y la ley.</p></div>
+        </div>
         <div class="important">IMPORTANTE: el 10% es un tope, no una multa automática para cualquier falta. Las sanciones deben evaluarse caso por caso.</div>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">7</span><h2>Conductas que pueden considerarse graves</h2></div>
-        <ul><li>Alterar marcaciones, controles, reportes o indicadores.</li><li>Presentar certificados o documentos falsos.</li><li>Sustraer o intentar sustraer dinero, materia prima, productos, herramientas o documentos.</li><li>Dañar deliberadamente bienes de la empresa o del cliente.</li><li>Ocultar daños o hechos que puedan perjudicar a la empresa.</li><li>Peleas, faltas graves de respeto, indisciplina o desobediencia grave.</li><li>Acoso, discriminación u hostigamiento.</li><li>Transgresiones graves a las disposiciones de seguridad e higiene.</li><li>No notificar ausencias en los tiempos determinados, incluyendo citas médicas.</li></ul>
+        <ul>
+          <li>Alterar marcaciones, controles, reportes o indicadores.</li>
+          <li>Presentar certificados o documentos falsos.</li>
+          <li>Sustraer o intentar sustraer dinero, materia prima, productos, herramientas o documentos.</li>
+          <li>Dañar deliberadamente bienes de la empresa o del cliente.</li>
+          <li>Ocultar daños o hechos que puedan perjudicar a la empresa.</li>
+          <li>Peleas, faltas graves de respeto, indisciplina o desobediencia grave.</li>
+          <li>Acoso, discriminación u hostigamiento.</li>
+          <li>Transgresiones graves a las disposiciones de seguridad e higiene.</li>
+          <li>No notificar ausencias en los tiempos determinados, incluyendo citas médicas.</li>
+        </ul>
       </section>
 
       <section class="content-section">
         <div class="section-title"><span class="number">8</span><h2>Toda sanción debe quedar respaldada</h2></div>
         <p>Las medidas disciplinarias deben sustentarse en información clara y verificable. La documentación permite aplicar decisiones proporcionales, consistentes y justas, de acuerdo con el Reglamento Interno y la normativa aplicable.</p>
-        <ul><li>Registrar fechas, horarios y hechos relevantes.</li><li>Conservar reportes, fotografías, checklists, controles o comunicaciones cuando corresponda.</li><li>Evaluar cada caso según gravedad, reincidencia y perjuicio generado.</li><li>Mantener respaldo en el expediente cuando exista amonestación escrita, multa u otra medida formal.</li></ul>
+        <ul>
+          <li>Registrar fechas, horarios y hechos relevantes.</li>
+          <li>Conservar reportes, fotografías, checklists, controles o comunicaciones cuando corresponda.</li>
+          <li>Evaluar cada caso según gravedad, reincidencia y perjuicio generado.</li>
+          <li>Mantener respaldo en el expediente cuando exista amonestación escrita, multa u otra medida formal.</li>
+        </ul>
       </section>
 
       <section class="content-section">
@@ -415,112 +417,58 @@
 		</div>
       </section>
 
+      <section class="content-section">
 		<div class="section-title"><span class="number">10</span><h2>Prueba de capacitación</h2></div>
-		<div class="important">Al continuar, iniciarás el proceso de prueba sobre lo revisado en este contenido. Asegurate de registrar tus datos y respuestas correctamente.</div>
+		<div class="important">Al continuar, iniciarás el proceso de prueba sobre lo revisado en este contenido. Asegúrate de registrar tus datos y respuestas correctamente.</div>
 		
-		<!-- Contenedor para centrar -->
 		<div class="quiz-button-container">
 		  <a 
-			href="https://docs.google.com/forms/d/e/1FAIpQLSf1i6FL3wxxfR6H4SubEVQRBJ7_GCDbJL7uYLfn_vT_P7uN8Q/viewform?usp=publish-editor" 
+			href="https://google.com" 
 			class="quiz-button" 
 			target="_blank" 
 			rel="noopener noreferrer">
 			Ir a la prueba
 		  </a>
 		</div>
-	  
-  </main>
+      </section>
+    </section>
+	
+ </main>
 
   <footer>Material de capacitación interna basado en el documento: Capacitacion_Reglamento_Disciplina_INARI_CORPAG.pdf.</footer>
 
-<!-- PÁGINA 1: REGISTRO -->
-<!-- Asegúrate de que tenga las clases "page" y "active" -->
-<div id="pantalla-registro" class="page active">
-  <div class="registration-page">
-    
-    <!-- Lado Izquierdo: Hero -->
-    <div class="hero-content">
-      <div class="hero-inner">
-        <span class="eyebrow">Capacitación</span>
-        <h2>INARI CATERING</h2>
-        <p class="subtitle">Plataforma de capacitación en línea para personal.</p>
-      </div>
-    </div>
+  <script>
+    document.getElementById('trainingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    <!-- Lado Derecho: Formulario -->
-    <div class="registration-form-panel">
-      <div class="form-card">
-        <h3>Comenzar Registro</h3>
-        <p>Introduce tus datos para acceder al material de estudio.</p>
+      const nombre = document.getElementById('nombre').value;
+      const cedula = document.getElementById('cedula').value;
+      const confirmacion = document.getElementById('confirmacion').checked;
+      const mensaje = document.getElementById('formMessage');
+      const statusPill = document.getElementById('statusPill');
+
+      if (nombre.trim() === "" || cedula.trim() === "" || !confirmacion) {
+        mensaje.className = "message error";
+        mensaje.textContent = "Por favor, completa todos los campos obligatorios.";
+        mensaje.style.display = "block";
+        return;
+      }
+
+      mensaje.className = "message ok";
+      mensaje.textContent = "¡Registro exitoso! Cargando el material...";
+      mensaje.style.display = "block";
+
+      setTimeout(() => {
+        statusPill.textContent = "Registro completado";
+        statusPill.style.background = "#166534"; 
+        document.getElementById('nombreParticipante').textContent = nombre;
+
+        document.getElementById('pageRegistro').classList.remove('active');
+        document.getElementById('pageContenido').classList.add('active');
         
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" />
-
-        <div class="check-row">
-          <input type="checkbox" id="terminos" />
-          <label for="terminos">Acepto los términos, condiciones y la política de privacidad de la empresa.</label>
-        </div>
-
-        <!-- Botón de acción -->
-        <button id="btn-registrar">Confirmar registro y continuar</button>
-        
-        <!-- Contenedor del mensaje -->
-        <div class="message"></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- PÁGINA 2: EL CONTENIDO DE TU CAPACITACIÓN -->
-<!-- Debe tener la clase "page" (para que empiece oculta) y el ID "pantalla-contenido" -->
-<div id="pantalla-contenido" class="page">
-  <main>
-    <div class="participant-banner">
-      Bienvenido/a. Has ingresado correctamente al material de capacitación.
-    </div>
-
-    <section class="content-section">
-      <div class="section-title">
-        <span class="number">1</span>
-        <h2>Módulo Introductorio</h2>
-      </div>
-      <p>Aquí va todo el contenido que ya tienes redactado en tu archivo...</p>
-    </section>
-  </main>
-</div>
-
-<!-- JAVASCRIPT DE NAVEGACIÓN -->
-<script>
-  document.getElementById('btn-registrar').addEventListener('click', function(e) {
-    e.preventDefault();
-
-    const nombre = document.getElementById('nombre').value;
-    const terminos = document.getElementById('terminos').checked;
-    const mensaje = document.querySelector('.message');
-
-    // 1. Validar que los campos estén completos
-    if (nombre.trim() === "" || !terminos) {
-      mensaje.className = "message error";
-      mensaje.textContent = "Por favor, ingresa tu nombre y acepta los términos.";
-      return;
-    }
-
-    // 2. Mostrar mensaje de éxito temporal
-    mensaje.className = "message ok";
-    mensaje.textContent = "¡Registro exitoso! Accediendo...";
-
-    // 3. Hacer la transición de páginas tras un breve segundo
-    setTimeout(() => {
-      // Oculta la pantalla de registro quitando 'active'
-      document.getElementById('pantalla-registro').classList.remove('active');
-      
-      // Muestra la pantalla de contenido agregando 'active'
-      document.getElementById('pantalla-contenido').classList.add('active');
-    }, 1200); 
-  });
-</script>
-
-	
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 1200);
+    });
+  </script>
 </body>
 </html>
