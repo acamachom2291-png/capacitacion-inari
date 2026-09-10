@@ -433,41 +433,94 @@
 
   <footer>Material de capacitación interna basado en el documento: Capacitacion_Reglamento_Disciplina_INARI_CORPAG.pdf.</footer>
 
-   <script>
-    document.querySelector('button').addEventListener('click', function(e) {
-      e.preventDefault(); // Evita que la página se recargue por defecto
-      
-      // Obtener los inputs del formulario
-      const nombre = document.querySelector('input[type="text"]').value;
-      const terminos = document.querySelector('input[type="checkbox"]').checked;
-      const mensaje = document.querySelector('.message');
+<!-- PÁGINA 1: REGISTRO -->
+<!-- Asegúrate de que tenga las clases "page" y "active" -->
+<div id="pantalla-registro" class="page active">
+  <div class="registration-page">
+    
+    <!-- Lado Izquierdo: Hero -->
+    <div class="hero-content">
+      <div class="hero-inner">
+        <span class="eyebrow">Capacitación</span>
+        <h2>INARI CATERING</h2>
+        <p class="subtitle">Plataforma de capacitación en línea para personal.</p>
+      </div>
+    </div>
 
-      // Validación simple
-      if (nombre.trim() === "" || !terminos) {
-        mensaje.className = "message error";
-        mensaje.textContent = "Por favor, ingresa tu nombre y acepta los términos.";
-        mensaje.style.display = "block";
-        return;
-      }
-
-      // Si todo está bien, ocultamos la página de registro y mostramos la siguiente
-      mensaje.className = "message ok";
-      mensaje.textContent = "¡Registro exitoso! Cargando capacitación...";
-      mensaje.style.display = "block";
-
-      setTimeout(() => {
-        // Cambiar entre secciones/páginas (asumiendo que usas las clases .page y .active)
-        document.querySelector('.registration-page').classList.remove('active');
+    <!-- Lado Derecho: Formulario -->
+    <div class="registration-form-panel">
+      <div class="form-card">
+        <h3>Comenzar Registro</h3>
+        <p>Introduce tus datos para acceder al material de estudio.</p>
         
-        // REEMPLAZA '.siguiente-pagina' por el ID o clase de tu sección de capacitación
-        const infoPage = document.querySelector('.content-section'); 
-        if(infoPage) infoPage.classList.add('active');
-      }, 1500);
-    });
-  </script>
-</body>
-</html>
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" />
 
-  </script>
+        <div class="check-row">
+          <input type="checkbox" id="terminos" />
+          <label for="terminos">Acepto los términos, condiciones y la política de privacidad de la empresa.</label>
+        </div>
+
+        <!-- Botón de acción -->
+        <button id="btn-registrar">Confirmar registro y continuar</button>
+        
+        <!-- Contenedor del mensaje -->
+        <div class="message"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PÁGINA 2: EL CONTENIDO DE TU CAPACITACIÓN -->
+<!-- Debe tener la clase "page" (para que empiece oculta) y el ID "pantalla-contenido" -->
+<div id="pantalla-contenido" class="page">
+  <main>
+    <div class="participant-banner">
+      Bienvenido/a. Has ingresado correctamente al material de capacitación.
+    </div>
+
+    <section class="content-section">
+      <div class="section-title">
+        <span class="number">1</span>
+        <h2>Módulo Introductorio</h2>
+      </div>
+      <p>Aquí va todo el contenido que ya tienes redactado en tu archivo...</p>
+    </section>
+  </main>
+</div>
+
+<!-- JAVASCRIPT DE NAVEGACIÓN -->
+<script>
+  document.getElementById('btn-registrar').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const terminos = document.getElementById('terminos').checked;
+    const mensaje = document.querySelector('.message');
+
+    // 1. Validar que los campos estén completos
+    if (nombre.trim() === "" || !terminos) {
+      mensaje.className = "message error";
+      mensaje.textContent = "Por favor, ingresa tu nombre y acepta los términos.";
+      return;
+    }
+
+    // 2. Mostrar mensaje de éxito temporal
+    mensaje.className = "message ok";
+    mensaje.textContent = "¡Registro exitoso! Accediendo...";
+
+    // 3. Hacer la transición de páginas tras un breve segundo
+    setTimeout(() => {
+      // Oculta la pantalla de registro quitando 'active'
+      document.getElementById('pantalla-registro').classList.remove('active');
+      
+      // Muestra la pantalla de contenido agregando 'active'
+      document.getElementById('pantalla-contenido').classList.add('active');
+    }, 1200); 
+  });
+</script>
+
+	
 </body>
 </html>
